@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload and Summary</title>
+</head>
+<body>
+    <h1>파일 및 전화번호 업로드</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="phone_number">전화번호:</label>
+        <input type="text" name="phone_number" required>
+        <br><br>
+        <input type="file" name="file" required>
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if files %}
+    <h2>업로드된 파일 목록</h2>
+    <ul>
+        {% for file in files %}
+        <li>{{ file }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if transcript %}
+    <h2>음성 - 텍스트 변환</h2>
+    <p>{{ transcript }}</p>
+    {% endif %}
+
+
+    {% if summary %}
+    <h2>요약본</h2>
+    <p>{{ summary }}</p>
+    {% endif %}
+    
+
+    {% if warning_message %}
+    <h2>경고창</h2>
+    <p>{{ warning_message }}</p>
+    {% endif %}
+
+</body>
+</html>
